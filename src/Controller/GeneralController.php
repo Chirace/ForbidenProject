@@ -1,8 +1,10 @@
 <?php
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
-class GeneralController {
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class GeneralController extends AbstractController {
    public function accueil() {
-    return new Response("Un accueil de qualité !");
+       return $this->render('general/accueil.html.twig');
    }
 }
