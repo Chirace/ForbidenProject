@@ -10,4 +10,7 @@ login_guest:
     path: /guest
     controller: App\Controller\GeneralController::guest
 
+error404:
+    path: /{url} 
+    controller: App\Controller\GeneralController::erreur
 
