@@ -10,6 +10,34 @@ login_guest:
     path: /guest
     controller: App\Controller\GeneralController::guest
 
+home_responsable_ue:
+    path: /homeRUE
+    controller: App\Controller\GeneralController::homeRue
+
+setting:
+    path: /setting
+    controller: App\Controller\GeneralController::setting
+
+student_list:
+    path: /students
+    controller: App\Controller\GeneralController::listStudents
+
+tutor_list:
+    path: /tuteurs
+    controller: App\Controller\GeneralController::listTutors
+
+tutor_assign:
+    path: /tutorAssign
+    controller: App\Controller\GeneralController::assignTutor
+
+add_feasibility_sheet:
+    path: /addSheet
+    controller: App\Controller\GeneralController::addSheet
+
+add_list_students:
+    path: /addListStudent
+    controller: App\Controller\GeneralController::addListStudent
+
 error404:
     path: /{url} 
     controller: App\Controller\GeneralController::erreur
