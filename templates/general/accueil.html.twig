@@ -4,16 +4,29 @@
         <meta charset="UTF-8">
         <link rel="icon" href="/images/favicon.ico" />
         <title>L'index</title>
+        <style>
+        
+        </style>
         {% block stylesheets %}
             <link href="{{ asset('css/custom.css') }}" type="text/css" rel="stylesheet">
         {% endblock %}
     </head>
     <body>
-        <h1>Ce site est actuellement en construction :</h1>
-        <p> C'est-à-dire qu'on a eût pas mal de projets en ce moment<br \>
-        Notamment le TD8 d'ASI2, les TD2 et TD3 de Web Design (ce dernier qui a été décalé au final), l'oral d'anglais à préparer,
-        heureusement que le cahier des charges pour le portefeuille et le rapport de 20 pages de théorie des organisations 
-        ont été indiqué bien en avance histoire de pouvoir s'avancer.
-        </p>
+        <form class="formulaire" action="/authentification" method="post">
+            <img class="logo_upjv" src="/images/logo_upjv.png" alt="Logo UPJV">
+            <div>
+                <label for="login">Identifiant :</label>
+                <input type="text" id="login" name="user_login">
+            </div>
+            <div>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="user_password">
+            </div>
+            <div class="button">
+                <button type="submit">Se connecter</button>
+            </div>
+            <p class="blue">Mot de passe oublié ?</p>
+            <p>Pour des raisons de sécurité, veuillez vous <a href="/">déconnecter</a> et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.</p>
+        </form>
     </body>
 </html>

@@ -20,3 +20,18 @@ body {
     background-size: cover;
     background-position: center center;
 }
+
+form {
+    /* Uniquement centrer le formulaire sur la page */
+    margin: 0 auto;
+    width: 400px;
+    /* Encadré pour voir les limites du formulaire */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+.button {
+    background-color: #032E5A;
+    color: #032E5A;
+}
