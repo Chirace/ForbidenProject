@@ -29,9 +29,9 @@ form {
     padding: 1em;
     border: 1px solid #CCC;
     border-radius: 1em;
+    background-color:white;
 }
 
 .button {
-    background-color: #032E5A;
     color: #032E5A;
 }
