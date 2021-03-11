@@ -6,10 +6,19 @@
 
 h1 {
     margin: 0;
+    margin-right: auto;
+}
+
+h4 {
+    margin-left: auto;
 }
 
 html {
     height: 100%;
+}
+
+a {
+    color:black;
 }
 
 body {
@@ -25,4 +34,9 @@ nav {
     background-color: #032E5A;
     color: white;
     display: block;
+    align-items: center;
+}
+
+html > body > header > nav > h1 > a {
+    color: white;
 }
