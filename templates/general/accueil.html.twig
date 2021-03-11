@@ -12,20 +12,21 @@
         {% endblock %}
     </head>
     <body>
-        <form action="/authentification" method="post">
-            <img class="logo_upjv" src="/images/logo_upjv.png" alt="Logo UPJV">
+        <form action="/authentification" method="post" class="text-align left"> 
+            <img class="logo_upjv" src="/images/upjv.png" alt="Logo UPJV">
             <div>
-                <label for="login">Identifiant :</label>
-                <input type="text" id="login" name="user_login">
+                <label for="login">Identifiant :</label><br />
+                <input type="text" id="login" name="user_login" placeholder="Login">
             </div>
             <div>
-                <label for="password">Mot de passe :</label>
-                <input type="text" id="passaword" name="user_passaword">
+                <label for="password">Mot de passe :</label><br />
+                <input type="text" id="password" name="user_password" placeholder="Mot de passe">
             </div>
-            <div class="button">
-                <button type="submit">Se connecter</button>
             <div>
-            <p>Mot de passe oublié ?</p>
+                <button type="submit" class="button">Se connecter</button> 
+            </div>
+            <p>continuer vers le <a href="{{ path('home_responsable_ue') }}">menu principal</a></p>
+            <a href="/">Mot de passe oublié ?</a>
             <p>Pour des raisons de sécurité, veuillez vous <a href="/">déconnecter</a> et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.</p>
         </form>
     </body>
