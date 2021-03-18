@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="icon" href="/images/favicon.ico" />
-        <title>Responsable UE - Accueil</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-            <link href="{{ asset('css/custom_responsableUE.css') }}" type="text/css" rel="stylesheet">
-        {% endblock %}
-    </head>
-    <body>
-        <header>
-            <nav class="nav">
-                <h1><a href="{{ path('home_responsable_ue') }}">UPJV OGPP</a></h1>
-                <h4>Déconnexion</h4>
-            </nav>
-        </header>
-        <div class="container">
-            <a href="{{ path('tutor_list') }}">Liste des tuteurs universitaires</a> <br />
-            <a href="{{ path('student_list') }}">Liste des étudiants et notes</a> <br />
-            <a href="{{ path('setting') }}">Paramétrer les dates de rendu et délais de relance</a> <br />
-            <a href="{{ path('tutor_assign') }}">Assignation des tuteurs</a> <br />
-            <a href="{{ path('add_feasibility_sheet') }}">Importer une fiche de faisabilité</a>
-        </div>
-    </body>
-</html>
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <a href="{{ path('tutor_list') }}">Liste des tuteurs universitaires</a> <br />
+        <a href="{{ path('student_list') }}">Liste des étudiants et notes</a> <br />
+        <a href="{{ path('setting') }}">Paramétrer les dates de rendu et délais de relance</a> <br />
+        <a href="{{ path('tutor_assign') }}">Assignation des tuteurs</a> <br />
+        <a href="{{ path('add_feasibility_sheet') }}">Importer une fiche de faisabilité</a>
+    </div>
+{% endblock %}

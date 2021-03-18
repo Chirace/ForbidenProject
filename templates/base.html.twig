@@ -2,12 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Forbiden Project{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link href="{{ asset('css/custom_responsableUE.css?version=51') }}" type="text/css" rel="stylesheet">
+        {% endblock %}
+        <link rel="icon" href="/images/favicon.ico" />
 
         {% block javascripts %}{% endblock %}
     </head>
     <body>
+        <header>
+            <nav class="nav">
+                <h1><a href="{{ path('home_responsable_ue') }}">UPJV OGPP</a></h1>
+                <h4><a href="{{ path('index') }}">Déconnexion</a></h4>
+            </nav>
+        </header>
         {% block body %}{% endblock %}
     </body>
 </html>

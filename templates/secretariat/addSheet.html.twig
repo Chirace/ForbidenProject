@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html> 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="icon" href="/images/favicon.ico" />
-        <title>Secrétariat - Importer fiche faisabilité</title>
-        {% block stylesheets %}
-            <link href="{{ asset('css/custom.css') }}" type="text/css" rel="stylesheet">
-        {% endblock %}
-    </head>
-    <body>
-        <header>
-            <p>Faire une navigation</p>
-        </header>
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
         <h1>Importer une fiche de faisabilité</h1>
         <p>Sélectionner un étudiant, Bouton 'Sélectionner un fichier' et un bouton 'Charger le fichier'</p>
-    </body>
-</html>
+    </div>
+{% endblock %}
