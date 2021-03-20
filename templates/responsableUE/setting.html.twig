@@ -2,11 +2,26 @@
 {% block body %}
     <div class="container">
         <h1>Paramétrer les dates de rendu et délais de relance</h1>
-        <p>Rendu du poster <br \>
-        Rendu du rapport<br \>
-        <br \>
-        Relance étudiants __ jours.<br \>
-        Relance tuteurs __ jours.
-        </p>
+        <div>
+            <label>Rendu du poster</label>
+            <input type="text" id="input_date" name="rendu_poster" placeholder="JJ/MM">
+        </div>
+        <div>
+            <label>Rendu du rapport</label>
+            <input type="text" id="space_bot" name="rendu_rapport" placeholder="JJ/MM">
+        </div>
+        <div>
+            <label>Relance étudiants</label>
+            <input type="text" id="input_number" name="relance_etudiant" placeholder="Nombre de jours">
+            <label>jours.</label>
+        </div>
+        <div>
+            <label>Relance tuteurs</label>
+            <input type="text" id="input_number" name="relance_tuteur" placeholder="Nombre de jours">
+            <label>jours.</label>
+        </div>
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
     </div>
 {% endblock %}

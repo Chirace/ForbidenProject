@@ -2,6 +2,35 @@
 {% block body %}
     <div class="container">
         <h1>Listes des tuteurs</h1>
-        <p>Faire un tableau à deux colonnes ('Enseignants' et 'Commentaire')</p>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Enseignant</th>
+                    <th scope="col">Commentaire</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Catherine Barry</td>
+                    <td>Ceci est un commentaire pertinent</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Anne Lapujade</td>
+                    <td>Ceci est un autre commentaire pertinent</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Bruno Cojean</td>
+                    <td>Définitivement un commentaire pertinent</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
     </div>
 {% endblock %}

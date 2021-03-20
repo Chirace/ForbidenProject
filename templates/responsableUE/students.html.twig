@@ -2,6 +2,44 @@
 {% block body %}
     <div class="container">
         <h1>Notes des étudiants</h1>
-        <p>Faire un tableau à trois colonnes ('Étudiants', 'Note Suivi', 'Note Oral')</p>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Étudiants</th>
+                    <th scope="col">Note Suivi</th>
+                    <th scope="col">Note Oral</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Alexis Chirat</td>
+                    <td>20</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Louis Savard</td>
+                    <td>20</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Gaulthier Tomala</td>
+                    <td>20</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Romain Vantomme</td>
+                    <td>20</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
     </div>
 {% endblock %}

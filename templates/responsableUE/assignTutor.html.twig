@@ -2,6 +2,78 @@
 {% block body %}
     <div class="container">
         <h1>Assignation des tuteurs</h1>
-        <p>Faire un tableau à quatre colonnes ('Étudiants', 'Entreprise', 'Localité' et 'Tuteur')</p>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Étudiants</th>
+                    <th scope="col">Entreprise</th>
+                    <th scope="col">Localité</th>
+                    <th scope="col">Tuteur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Alexis Chirat</td>
+                    <td>Institut d'Ingénierie de la Santé</td>
+                    <td>Amiens</td>
+                    <td>
+                        <select class="custom-select">
+                            <option selected>A définir...</option>
+                            <option value="1">Catherine Barry</option>
+                            <option value="2">Anne Lapujade</option>
+                            <option value="3">Bruno Cojean</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Louis Savard</td>
+                    <td>Médiamétrie</td>
+                    <td>Amiens</td>
+                    <td>
+                        <select class="custom-select">
+                            <option selected>A définir...</option>
+                            <option value="1">Catherine Barry</option>
+                            <option value="2">Anne Lapujade</option>
+                            <option value="3">Bruno Cojean</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Gaulthier Tomala</td>
+                    <td>Joker</td>
+                    <td>Amiens</td>
+                    <td>
+                        <select class="custom-select">
+                            <option selected>A définir...</option>
+                            <option value="1">Catherine Barry</option>
+                            <option value="2">Anne Lapujade</option>
+                            <option value="3">Bruno Cojean</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Romain Vantomme</td>
+                    <td>Joker</td>
+                    <td>Amiens</td>
+                    <td>
+                        <select class="custom-select">
+                            <option selected>A définir...</option>
+                            <option value="1">Catherine Barry</option>
+                            <option value="2">Anne Lapujade</option>
+                            <option value="3">Bruno Cojean</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="button" class="group_button">
+        <a class="button2" href="{{ path('home_responsable_ue') }}" >Enregistrer les modifications</a>
+        <a class="button2" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
     </div>
 {% endblock %}
