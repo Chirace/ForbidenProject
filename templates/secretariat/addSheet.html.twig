@@ -1,7 +1,25 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container">
+    <div class="top_container">
         <h1>Importer une fiche de faisabilité</h1>
-        <p>Sélectionner un étudiant, Bouton 'Sélectionner un fichier' et un bouton 'Charger le fichier'</p>
+    </div>
+    <div class="container">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile04">
+            <label class="custom-file-label" for="inputGroupFile04">Sélectionner un fichier</label>
+        </div>
+        <div class="top_container">
+            <select class="custom-select">
+                <option selected>Étudiants...</option>
+                <option value="1">Chirat Alexis</option>
+                <option value="2">Savard Louis</option>
+                <option value="3">Tomala Gaulthier</option>
+                <option value="4">Vantomme Romain</option>
+            </select>
+            <button class="button3" type="button">Affecter à l'étudiant</button>
+        </div>
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
     </div>
 {% endblock %}

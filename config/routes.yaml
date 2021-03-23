@@ -14,6 +14,10 @@ home_responsable_ue:
     path: /homeRUE
     controller: App\Controller\GeneralController::homeRue
 
+home_students:
+    path: /homeStudent
+    controller: App\Controller\GeneralController::homeStudents
+
 setting:
     path: /setting
     controller: App\Controller\GeneralController::setting

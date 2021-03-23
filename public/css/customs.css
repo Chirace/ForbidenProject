@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+* {
+    font-family: "Maven Pro";
+}
+
 h1 {
     margin: 0;
 }
@@ -53,9 +57,9 @@ img {
 
 form {
     margin: 0 auto;
-    margin-top: 100px;
-    width: 400px;
-    height: 500px;
+    margin-top: 0 auto;
+    width: 25%;
+    height: auto;
     padding: 1em;
     background-color:white;
 }
