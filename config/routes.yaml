@@ -10,13 +10,29 @@ login_guest:
     path: /guest
     controller: App\Controller\GeneralController::guest
 
+home_admin:
+    path: /homeAdmin
+    controller: App\Controller\GeneralController::homeAdmin
+
+home_external_speaker:
+    path: /homeExternalSpeaker
+    controller: App\Controller\GeneralController::homeExternalSpeaker
+
 home_responsable_ue:
     path: /homeRUE
     controller: App\Controller\GeneralController::homeRue
 
+home_scolarite:
+    path: /homeScolarite
+    controller: App\Controller\GeneralController::homeScolarite
+
 home_students:
     path: /homeStudent
     controller: App\Controller\GeneralController::homeStudents
+
+home_tutors:
+    path: /homeTutor
+    controller: App\Controller\GeneralController::homeTutors
 
 setting:
     path: /setting

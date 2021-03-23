@@ -8,9 +8,29 @@ class GeneralController extends AbstractController {
        return $this->render('general/accueil.html.twig');
    }
 
-   public function homeRue(){
-       return $this->render('responsableUE/accueil.html.twig');
+   public function homeAdmin(){
+       return $this->render('admin/accueil.html.twig');
    }
+
+   public function homeExternalSpeaker(){
+        return $this->render('externalSpeaker/accueil.html.twig');
+    }
+
+    public function homeRue(){
+        return $this->render('responsableUE/accueil.html.twig');
+    }
+
+    public function homeScolarite(){
+        return $this->render('scolarite/accueil.html.twig');
+    }
+
+    public function homeStudents(){
+        return $this->render('student/accueil.html.twig');
+    }
+
+    public function homeTutors(){
+        return $this->render('tutor/accueil.html.twig');
+    }
 
    public function setting(){
        return $this->render('responsableUE/setting.html.twig');

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Création de compte</h1>
+        <div>
+            <label class="little_label">Login :</label>
+            <input type="text" id="input_string" name="login" placeholder="Login">
+        </div>
+        <div>
+            <label class="little_label">Mot de passe :</label>
+            <input type="text" id="input_string" name="password" placeholder="Password">
+        </div>
+        <select class="custom-select">
+            <option selected>Choisir un rôle...</option>
+            <option value="1">Étudiant</option>
+            <option value="2">Responsable UE</option>
+            <option value="3">Scolarité</option>
+            <option value="4">Tuteurs</option>
+        </select>
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_responsable_ue') }}" >Ajouter le compte</a>
+    </div>
+{% endblock %}
