@@ -8,6 +8,12 @@ class GeneralController extends AbstractController {
        return $this->render('general/accueil.html.twig');
    }
 
+   public function login(){
+        return $this->render('responsableUE/accueil.html.twig');
+   }
+
+   public function logout() {}
+
    public function homeAdmin(){
        return $this->render('admin/accueil.html.twig');
    }

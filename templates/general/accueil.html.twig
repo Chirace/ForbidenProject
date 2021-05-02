@@ -12,25 +12,25 @@
         {% endblock %}
     </head>
     <body>
-        <form action="/authentification" method="post" class="text-align left"> 
+        <form action="{{ path('login') }}" method="post" class="text-align left"> 
             <img class="logo_upjv" src="/images/upjv.png" alt="Logo UPJV">
             <div>
                 <label for="login">Identifiant :</label><br />
-                <input type="text" id="login" name="user_login" placeholder="Login">
+                <input type="text" id="login" name="_username" placeholder="Login" required>
             </div>
             <div>
                 <label for="password">Mot de passe :</label><br />
-                <input type="text" id="password" name="user_password" placeholder="Mot de passe">
+                <input type="password" id="password" name="_password" placeholder="Mot de passe" required>
             </div>
             <div>
                 <button type="submit" class="button">Se connecter</button>
             </div>
-            <p>Se connecter en tant que <a href="{{ path('home_admin') }}">administrateur</a></p>
+            <!--<p>Se connecter en tant que <a href="{{ path('home_admin') }}">administrateur</a></p>
             <p>Se connecter en tant que <a href="{{ path('home_external_speaker') }}">intervenant extérieur</a></p>
             <p>Se connecter en tant que <a href="{{ path('home_responsable_ue') }}">responsable UE</a></p>
             <p>Se connecter en tant que <a href="{{ path('home_scolarite') }}">scolarité</a></p>
             <p>Se connecter en tant que <a href="{{ path('home_students') }}">étudiant</a></p>
-            <p>Se connecter en tant que <a href="{{ path('home_tutors') }}">tuteur universitaire</a></p>
+            <p>Se connecter en tant que <a href="{{ path('home_tutors') }}">tuteur universitaire</a></p>-->
             <a href="/">Mot de passe oublié ?</a>
             <p>Pour des raisons de sécurité, veuillez vous <a href="/">déconnecter</a> et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.</p>
         </form>

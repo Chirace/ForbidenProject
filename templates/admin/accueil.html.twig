@@ -3,6 +3,14 @@
     <div class="container">
         <h1>Création de compte</h1>
         <div>
+            <label class="little_label">Nom :</label>
+            <input type="text" id="input_string" name="nom" placeholder="Nom">
+        </div>
+        <div>
+            <label class="little_label">Prénom :</label>
+            <input type="text" id="input_string" name="prenom" placeholder="Prénom">
+        </div>
+        <div>
             <label class="little_label">Login :</label>
             <input type="text" id="input_string" name="login" placeholder="Login">
         </div>
@@ -16,6 +24,11 @@
             <option value="2">Responsable UE</option>
             <option value="3">Scolarité</option>
             <option value="4">Tuteurs</option>
+        </select>
+        <select class="custom-select">
+            <option selected>Choisir la formation...</option>
+            <option value="1">M1 MIAGE</option>
+            <option value="2">M2 MIAGE</option>
         </select>
     </div>
     <div id="button">

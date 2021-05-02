@@ -157,6 +157,7 @@ html > body > header > nav > h4 > a {
     border-radius: 5px;
     font-size: 1.2em;
     margin-left: 20%;
+    margin-right: 20%;
 
     display: inline-block;
     text-align: center;
@@ -173,6 +174,22 @@ html > body > header > nav > h4 > a {
     border-radius: 5px;
     font-size: 1.2em;
     margin-left: 30%;
+
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+}
+
+.button4 {
+    margin-top: 45px;
+    width: 20%;
+    height: 40px;
+    border: none;
+    background-color: #00519E;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin-left: 20%;
 
     display: inline-block;
     text-align: center;
