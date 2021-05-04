@@ -62,6 +62,38 @@ add_list_students:
     path: /addListStudent
     controller: App\Controller\GeneralController::addListStudent
 
+scolarite_document:
+    path: /scolarite/addDocument
+    controller: App\Controller\ScolariteController::addDocument
+
+scolarite_students:
+    path: /scolarite/students
+    controller: App\Controller\ScolariteController::listStudents
+
+student_marks:
+    path: /student/marks
+    controller: App\Controller\StudentController::marks
+
+student_document:
+    path: /student/addDocument
+    controller: App\Controller\StudentController::addDocument
+
+external_rateStudent:
+    path: /ExternalSpeaker/rateStudent
+    controller: App\Controller\ExternalController::rateStudent
+
+tutor_students:
+    path: /tutor/students
+    controller: App\Controller\TutorController::listStudents
+
+tutor_document:
+    path: /tutor/addDocument
+    controller: App\Controller\TutorController::addDocument
+
+tutor_rateStudent:
+    path: /tutor/rateStudent
+    controller: App\Controller\TutorController::rateStudent
+
 error404:
     path: /{url} 
     controller: App\Controller\GeneralController::erreur

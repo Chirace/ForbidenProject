@@ -1,55 +1,100 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Ici la création de compte utilisateur par l'administrateur</h1>
+<h1 class="margin_left">Ici la création de compte utilisateur par l'administrateur</h1>
+    <div class="container">
+        {{ form_start(form) }}
+        
+        <div class="form-group">
+            {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom ...'} }) }}
+            {{ form_errors(form.nom) }}
+        </div>
 
-    {{ form_start(form) }}
-    
-    <div class="form-group">
-        {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'p'}} ) }}
-        {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom ...'} }) }}
-        {{ form_errors(form.nom) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.prenom, 'Prénom', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prénom ...'} }) }}
+            {{ form_errors(form.prenom) }}
+        </div>
 
-    <div class="form-group">
-        {{ form_label(form.prenom, 'Prénom', {'label_attr': {'class': 'p'}} ) }}
-        {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prénom ...'} }) }}
-        {{ form_errors(form.prenom) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.username, 'Identifiant', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Identifiant ...'} }) }}
+            {{ form_errors(form.username) }}
+        </div>
 
-    <div class="form-group">
-        {{ form_label(form.username, 'Identifiant', {'label_attr': {'class': 'p'}} ) }}
-        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Identifiant ...'} }) }}
-        {{ form_errors(form.username) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.mail, 'Adresse mail', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.mail, {'attr': {'class': 'form-control', 'placeholder': 'Adresse email ...'} }) }}
+            {{ form_errors(form.mail) }}
+        </div>
 
-    <div class="form-group">
-        {{ form_label(form.mail, 'Adresse mail', {'label_attr': {'class': 'p'}} ) }}
-        {{ form_widget(form.mail, {'attr': {'class': 'form-control', 'placeholder': 'Adresse email ...'} }) }}
-        {{ form_errors(form.mail) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.telephone, 'Téléphone', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Numéro de téléphone ...'} }) }}
+            {{ form_errors(form.telephone) }}
+        </div>
 
-    <div class="form-group">
-        {{ form_label(form.telephone, 'Téléphone', {'label_attr': {'class': 'p'}} ) }}
-        {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Numéro de téléphone ...'} }) }}
-        {{ form_errors(form.telephone) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.password, 'Mot de passe', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe ...'} }) }}
+            {{ form_errors(form.password) }}
+        </div>
 
-    <div class="form-group">
-        {{ form_label(form.password, 'Mot de passe', {'label_attr': {'class': 'p'}} ) }}
-        {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe ...'} }) }}
-        {{ form_errors(form.password) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.confirm_password, 'Confirmer le mot de passe', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.confirm_password, {'attr': {'class': 'form-control', 'placeholder': 'Répétez votre mot de passe ...'} }) }}
+            {{ form_errors(form.confirm_password) }}
+        </div>
 
-    <div class="form-group">
-        {{ form_label(form.confirm_password, 'Confirmer le mot de passe', {'label_attr': {'class': 'p'}} ) }}
-        {{ form_widget(form.confirm_password, {'attr': {'class': 'form-control', 'placeholder': 'Répétez votre mot de passe ...'} }) }}
-        {{ form_errors(form.confirm_password) }}
-    </div>
+        <div class="form-group">
+            <p>Rôle :</p>
+            <select id="select_role" class="custom-select">
+                <option selected></option>
+                <!--<option value="1">Administrateur</option>-->
+                <option value="2">Étudiant</option>
+                <option value="3">Responsable UE</option>
+                <option value="4">Scolarité</option>
+                <option value="5">Tuteur</option>
+            </select>
+        </div>
+        <style>
+			.masquer{
+				display:none;
+			}
+			
+			.afficher{
+				display:block;
+			}
+		</style>
+        
 
-    <div class="group_button">
-        <button type="submit" class="button4">{% trans %}Valider{% endtrans %}</button>
-        <a class="button4" href="{{ path('home_admin') }}" >{% trans %}Annuler{% endtrans %}</a>
+        <div id="formation" class="form-group masquer">
+            <p>Formation :</p>
+            <select class="custom-select">
+                <option selected></option>
+                <option value="1">M1 MIAGE</option>
+                <option value="2">M2 MIAGE</option>
+            </select>
+        </div>
+        
+		<script>
+            document.getElementById('select_role').onChange=function() {
+				var select = document.getElementById('select_role');
+				var choice = select.selectedIndex;
+				var valeur = select.options.value;
+
+                if(valeur=='2'){
+                    document.getElementById('formation').className='afficher';
+				}else{
+                    document.getElementById('formation').className='masquer';
+                });
+        </script>
+
+        <div class="group_button margin_bottom">
+            <button type="submit" class="button4">Valider</button>
+            <a class="button4" href="{{ path('security_registration') }}">Effacer</a>
+        </div>
+        {{ form_end(form) }}
     </div>
-    {{ form_end(form) }}
 {% endblock %}

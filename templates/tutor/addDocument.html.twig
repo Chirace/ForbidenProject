@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="top_container">
+        <h1>Importer un document</h1>
+    </div>
+    <div class="container">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile04">
+            <label class="custom-file-label" for="inputGroupFile04">Sélectionner un fichier</label>
+        </div>
+        <div class="top_container">
+            <select class="custom-select">
+                <option selected>Type de document...</option>
+                <option value="1">Ficher de faisabilité</option>
+                <option value="2">Poster</option>
+                <option value="3">Document de suivi</option>
+            </select>
+        </div>
+        <div class="top_container">
+            <select class="custom-select">
+                <option selected>Étudiants...</option>
+                <option value="1">Chirat Alexis</option>
+                <option value="2">Savard Louis</option>
+                <option value="3">Tomala Gaulthier</option>
+                <option value="4">Vantomme Romain</option>
+            </select>
+            <button class="button3" type="button">Affecter à l'étudiant</button>
+        </div>
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_tutors') }}" >Retourner au menu principal</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="top_container">
+        <h1>Étudiant - Alexis CHIRAT</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Note suivi</th>
+                    <th scope="col">Note orale</th>
+                    <th scope="col">Note finale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>15</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="button" class="margin_top">
+        <a class="button" href="{{ path('home_students') }}" >Retourner au menu principal</a>
+    </div>
+{% endblock %}

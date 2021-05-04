@@ -157,7 +157,7 @@ html > body > header > nav > h4 > a {
     border-radius: 5px;
     font-size: 1.2em;
     margin-left: 20%;
-    margin-right: 20%;
+    margin-right: 0%;
 
     display: inline-block;
     text-align: center;
@@ -205,4 +205,16 @@ html > body > header > nav > h4 > a {
 .group_button {
     display:inline-flex;
     width: 100%;
+}
+
+.margin_bottom {
+    margin-bottom: 2%;
+}
+
+.margin_left {
+    margin-left: 2%;
+}
+
+.margin_top{
+    margin-top: 200px;
 }

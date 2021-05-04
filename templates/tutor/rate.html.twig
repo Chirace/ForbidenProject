@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Affectation de la note de suivi :</h1>
+    <div class="top_container">
+        <select class="custom-select">
+            <option selected>Étudiants...</option>
+            <option value="1">Chirat Alexis</option>
+            <option value="2">Savard Louis</option>
+            <option value="3">Tomala Gaulthier</option>
+            <option value="4">Vantomme Romain</option>
+        </select>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Note d'orale /20" aria-label="Note_orale" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">Évaluer</button>
+            </div>
+        </div>
+
+        <!--<button class="button3" type="button">Valider l'étudiant</button>-->
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_tutors') }}" >Retourner au menu principal</a>
+    </div>
+
+{% endblock %}

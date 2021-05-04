@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="top_container">
+        <h1>Importer un document</h1>
+    </div>
+    <div class="container">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile04">
+            <label class="custom-file-label" for="inputGroupFile04">Sélectionner un fichier</label>
+        </div>
+        <div class="top_container">
+            <select class="custom-select">
+                <option selected>Type de document...</option>
+                <option value="1">Ficher de faisabilité</option>
+                <option value="2">Poster</option>
+                <option value="3">Rapport</option>
+            </select>
+            <button class="button3" type="button">Valider</button>
+        </div>
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_students') }}" >Retourner au menu principal</a>
+    </div>
+{% endblock %}
