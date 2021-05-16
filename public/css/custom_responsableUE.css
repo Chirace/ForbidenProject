@@ -2,6 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  /*font-family: "Gill Sans", sans-serif;*/
 }
 
 h1 {
@@ -19,10 +20,12 @@ html {
 
 html > body > header > nav > h1 > a:hover{
     color:white;
+    text-decoration: none;
 }
 
 html > body > header > nav > h4 > a:hover{
     color:white;
+    text-decoration: none;
 }
 
 a {
@@ -43,10 +46,17 @@ body {
     background-color: white;
 }
 
+.custom_select {
+    width: 40%;
+    height: 40px;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+}
+
 input {
     margin-top: 5px;
     padding-left: 15px;
-    width: 20%;
+    width: 40%;
     height: 40px;
     border: none;
     background-color: rgb(236, 236, 236);
@@ -102,10 +112,12 @@ table {
 
 html > body > header > nav > h1 > a {
     color: white;
+    text-decoration: none;
 }
 
 html > body > header > nav > h4 > a {
     color: white;
+    text-decoration: none;
 }
 
 #button > a:hover {
@@ -132,7 +144,6 @@ html > body > header > nav > h4 > a {
 }
 
 .button {
-    margin-top: 45px;
     width: 20%;
     height: 40px;
     border: none;
@@ -148,7 +159,6 @@ html > body > header > nav > h4 > a {
 }
 
 .button2 {
-    margin-top: 45px;
     width: 20%;
     height: 40px;
     border: none;
@@ -165,7 +175,6 @@ html > body > header > nav > h4 > a {
 }
 
 .button3 {
-    margin-top: 45px;
     width: 40%;
     height: auto;
     border: solid;
@@ -181,7 +190,6 @@ html > body > header > nav > h4 > a {
 }
 
 .button4 {
-    margin-top: 45px;
     width: 20%;
     height: 40px;
     border: none;
@@ -190,10 +198,19 @@ html > body > header > nav > h4 > a {
     border-radius: 5px;
     font-size: 1.2em;
     margin-left: 20%;
+    text-decoration: none;
 
     display: inline-block;
     text-align: center;
     padding: 5px;
+    /*padding-top: 10px;*/
+    cursor: pointer;
+}
+
+.button4:hover {
+    color:white;
+    background-color: #0084ff;
+    text-decoration: none;
 }
 
 .custom-file {
@@ -203,6 +220,12 @@ html > body > header > nav > h4 > a {
 }
 
 .group_button {
+    display:inline-flex;
+    width: 100%;
+    margin-top: 1%;
+}
+
+.group_container {
     display:inline-flex;
     width: 100%;
 }

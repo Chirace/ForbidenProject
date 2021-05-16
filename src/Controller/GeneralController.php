@@ -38,6 +38,10 @@ class GeneralController extends AbstractController {
         return $this->render('tutor/accueil.html.twig');
     }
 
+    public function RUEFeasibility(){
+        return $this->render('responsableUE/feasibility.html.twig');
+    }
+
    public function setting(){
        return $this->render('responsableUE/setting.html.twig');
    }

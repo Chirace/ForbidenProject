@@ -38,6 +38,10 @@ home_tutors:
     path: /homeTutor
     controller: App\Controller\GeneralController::homeTutors
 
+RUE_see_feasibility_sheet:
+    path: /RUE/feasibility
+    controller: App\Controller\GeneralController::RUEFeasibility
+
 setting:
     path: /setting
     controller: App\Controller\GeneralController::setting
