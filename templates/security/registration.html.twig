@@ -50,45 +50,33 @@
         <div class="form-group">
             <p>Rôle :</p>
             <select id="select_role" class="custom-select">
-                <option selected></option>
-                <!--<option value="1">Administrateur</option>-->
-                <option value="2">Étudiant</option>
-                <option value="3">Responsable UE</option>
-                <option value="4">Scolarité</option>
-                <option value="5">Tuteur</option>
+                <option value="1">Étudiant</option>
+                <option value="2">Responsable UE</option>
+                <option value="3">Scolarité</option>
+                <option value="4">Tuteur</option>
             </select>
         </div>
-        <style>
-			.masquer{
-				display:none;
-			}
-			
-			.afficher{
-				display:block;
-			}
-		</style>
-        
 
-        <div id="formation" class="form-group masquer">
+        <div id="select_formation" class="form-group">
             <p>Formation :</p>
             <select class="custom-select">
-                <option selected></option>
                 <option value="1">M1 MIAGE</option>
                 <option value="2">M2 MIAGE</option>
             </select>
         </div>
-        
-		<script>
-            document.getElementById('select_role').onChange=function() {
-				var select = document.getElementById('select_role');
-				var choice = select.selectedIndex;
-				var valeur = select.options.value;
 
-                if(valeur=='2'){
-                    document.getElementById('formation').className='afficher';
-				}else{
-                    document.getElementById('formation').className='masquer';
-                });
+        <script>
+            document.getElementById("select_formation").style.display = "block";
+
+            function displayFormation(){
+            /* Si le role de l'utilisateur à créer est un étudiant */
+                if (document.getElementById('select_role').value === '1'){
+                    document.getElementById('select_formation').style.display = 'block';
+                } else {
+                    document.getElementById('select_formation').style.display = 'none';
+                }
+            }
+            document.getElementById('select_role').addEventListener('change', displayFormation);
         </script>
 
         <div class="group_button margin_bottom">

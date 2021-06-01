@@ -18,18 +18,29 @@
             <label class="little_label">Mot de passe :</label>
             <input type="text" id="input_string" name="password" placeholder="Password">
         </div>
-        <select class="custom_select">
-            <option selected>Choisir un rôle...</option>
+        <select class="custom_select" id="select_role">
             <option value="1">Étudiant</option>
             <option value="2">Responsable UE</option>
             <option value="3">Scolarité</option>
             <option value="4">Tuteurs</option>
         </select>
-        <select class="custom-select">
-            <option selected>Choisir la formation...</option>
+        <select class="custom-select" id="select_formation">
             <option value="1">M1 MIAGE</option>
             <option value="2">M2 MIAGE</option>
         </select>
+        <script>
+            document.getElementById("select_formation").style.display = "none";
+
+            function displayFormation(){
+            /* Si le role de l'utilisateur à créer est un étudiant */
+                if (document.getElementById('select_role').value === '1'){
+                    document.getElementById('select_formation').style.display = 'block';
+                } else {
+                    document.getElementById('select_formation').style.display = 'none';
+                }
+            }
+            document.getElementById('select_role').addEventListener('change', displayFormation);
+        </script>
     </div>
     <div id="button">
         <a class="button" href="{{ path('home_responsable_ue') }}" >Ajouter le compte</a>
