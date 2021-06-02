@@ -2,13 +2,13 @@ index:
     path: /
     controller: App\Controller\GeneralController::accueil
 
-login:
-    path: /login
-    controller: App\Controller\GeneralController::login
+#login:
+#    path: /login
+#    controller: App\Controller\GeneralController::login
 
-logout:
-    path: /logout
-    controller: App\Controller\GeneralController::logout
+#logout:
+#    path: /logout
+#    controller: App\Controller\GeneralController::logout
 
 login_guest:
     path: /guest

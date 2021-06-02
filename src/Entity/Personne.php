@@ -61,6 +61,15 @@ class Personne implements UserInterface
      */
     private $confirm_password;
 
+    private $role;
+
+    private $formation;
+
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $roles = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,11 +159,43 @@ class Personne implements UserInterface
         return $this;
     }
 
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    public function getFormation(): ?string
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(string $formation): self
+    {
+        $this->formation = $formation;
+
+        return $this;
+    }
+
     public function eraseCredentials() {}
 
     public function getSalt() {}
 
-    public function getRoles() {
-        return ['ROLE_USER'];
+    public function getRoles(): ?array 
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(?array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }

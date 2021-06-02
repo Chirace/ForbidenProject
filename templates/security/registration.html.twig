@@ -48,21 +48,13 @@
         </div>
 
         <div class="form-group">
-            <p>Rôle :</p>
-            <select id="select_role" class="custom-select">
-                <option value="1">Étudiant</option>
-                <option value="2">Responsable UE</option>
-                <option value="3">Scolarité</option>
-                <option value="4">Tuteur</option>
-            </select>
+            {{ form_label(form.role, 'Rôle', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.role, {'attr': {'class': 'custom-select', 'id': 'select_role'} }) }}
         </div>
 
         <div id="select_formation" class="form-group">
-            <p>Formation :</p>
-            <select class="custom-select">
-                <option value="1">M1 MIAGE</option>
-                <option value="2">M2 MIAGE</option>
-            </select>
+            {{ form_label(form.formation, 'Formation', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.formation, {'attr': {'class': 'custom-select'} }) }}
         </div>
 
         <script>
@@ -70,7 +62,7 @@
 
             function displayFormation(){
             /* Si le role de l'utilisateur à créer est un étudiant */
-                if (document.getElementById('select_role').value === '1'){
+                if (document.getElementById('select_role').value === 'Étudiant'){
                     document.getElementById('select_formation').style.display = 'block';
                 } else {
                     document.getElementById('select_formation').style.display = 'none';

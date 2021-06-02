@@ -81,12 +81,12 @@ class Etudiant
         return $this;
     }
 
-    public function getFormation(): ?string
+    public function getFormation(): ?Formation
     {
         return $this->formation;
     }
 
-    public function setFormation(string $formation): self
+    public function setFormation(Formation $formation): self
     {
         $this->formation = $formation;
 

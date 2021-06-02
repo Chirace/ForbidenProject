@@ -1,20 +1,38 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="/images/favicon.ico" />
+        <title>L'index</title>
+        <style>
 
-{% block title %}Hello SecurityController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/utilisateur/Desktop/ForbidenProject/src/Controller/SecurityController.php'|file_link(0) }}">src/Controller/SecurityController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/utilisateur/Desktop/ForbidenProject/templates/security/index.html.twig'|file_link(0) }}">templates/security/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+        </style>
+        {% block stylesheets %}
+            <link href="{{ asset('css/customs.css?version=52') }}" type="text/css" rel="stylesheet">
+        {% endblock %}
+    </head>
+    <body>
+        <form action="{{ path('security_login') }}" method="post" class="text-align left"> 
+            <img class="logo_upjv" src="/images/upjv.png" alt="Logo UPJV">
+            <div>
+                <label for="login">Identifiant :</label><br />
+                <input type="text" id="login" name="_username" placeholder="Login" required>
+            </div>
+            <div>
+                <label for="password">Mot de passe :</label><br />
+                <input type="password" id="password" name="_password" placeholder="Mot de passe" required>
+            </div>
+            <div>
+                <button type="submit" class="button">Se connecter</button>
+            </div>
+            <!--<p>Se connecter en tant que <a href="{{ path('security_registration') }}">administrateur</a></p>
+            <p>Se connecter en tant que <a href="{{ path('home_external_speaker') }}">intervenant extérieur</a></p>
+            <p>Se connecter en tant que <a href="{{ path('home_responsable_ue') }}">responsable UE</a></p>
+            <p>Se connecter en tant que <a href="{{ path('home_scolarite') }}">scolarité</a></p>
+            <p>Se connecter en tant que <a href="{{ path('home_students') }}">étudiant</a></p>
+            <p>Se connecter en tant que <a href="{{ path('home_tutors') }}">tuteur universitaire</a></p>-->
+            <a href="/">Mot de passe oublié ?</a>
+            <p>Pour des raisons de sécurité, veuillez vous <a href="/">déconnecter</a> et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.</p>
+        </form>
+    </body>
+</html>

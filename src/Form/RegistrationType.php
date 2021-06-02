@@ -6,6 +6,7 @@ use App\Entity\Personne;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class RegistrationType extends AbstractType
@@ -20,6 +21,19 @@ class RegistrationType extends AbstractType
             ->add('telephone')
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
+            ->add('role', ChoiceType::class, [
+                'choices'  => [
+                    'Étudiant' => 'Étudiant',
+                    'ResponsableUE' => 'ResponsableUE',
+                    'Scolarite' => 'Scolarite',
+                    'Tuteur' =>'Tuteur',
+                    'Administrateur' =>'Administrateur',
+                ],])
+            ->add('formation', ChoiceType::class, [
+                    'choices'  => [
+                        'M1 MIAGE' => 1,
+                        'M2 MIAGE' => 2,
+                    ],])
         ;
     }
 

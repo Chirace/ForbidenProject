@@ -19,13 +19,13 @@ security:
 
             provider: in_database
             form_login:
-                login_path: login
-                check_path: login
-                default_target_path: home_responsable_ue
+                login_path: security_login
+                check_path: security_login
+                default_target_path: security_login_success
 
             logout:
-                path: logout
-                target: login
+                path: security_logout
+                target: security_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -36,5 +36,13 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/etudiant, roles: ROLE_ETUDIANT }
+         - { path: ^/responsable, roles: ROLE_RESPONSABLE }
+         - { path: ^/tuteur, roles: ROLE_TUTEUR }
+         - { path: ^/secretariat, roles: ROLE_SECRETARIAT }
+
+    role_hierarchy:
+        ROLE_RESPONSABLE: ROLE_TUTEUR
+        ROLE_ADMIN: ROLE_RESPONSABLE
