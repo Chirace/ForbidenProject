@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="top_container">
+        <h1>Documents - {{ etudiant.personne.prenom }} {{ etudiant.personne.nom }}</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Type document</th>
+                    <th scope="col">Intitule</th>
+                    <th scope="col">État document</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for document in documents %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{ document.typeDocument.intitule }}</td>
+                    <td>{{ document.intitule }}</td>
+                    <td>{{ document.etatDocument }}</td>
+                    <td>
+                        <a href={{ asset('uploads/' ~ document.intitule) }} >{{ document.intitule }}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="button" class="margin_top">
+        <a class="button" href="{{ path('home_students') }}" >Retourner au menu principal</a>
+    </div>
+{% endblock %}

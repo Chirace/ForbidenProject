@@ -4,19 +4,31 @@
         <h1>Importer un document</h1>
     </div>
     <div class="container">
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile04">
-            <label class="custom-file-label" for="inputGroupFile04">Sélectionner un fichier</label>
+        {{ form_start(formDocument) }}
+        <div class="form-group">
+            {{ form_label(formDocument.intitule, 'Sélectionner un fichier', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(formDocument.intitule, {'attr': {'class': 'button_import'}} ) }}
         </div>
+
         <div class="top_container">
-            <select class="custom-select">
-                <option selected>Type de document...</option>
-                <option value="1">Ficher de faisabilité</option>
-                <option value="2">Poster</option>
-                <option value="3">Rapport</option>
-            </select>
-            <button class="button3" type="button">Valider</button>
+            {{ form_label(formDocument.typeDocument2, 'Type de document', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(formDocument.typeDocument2, {'attr': {'class': 'custom-select'}} ) }}
         </div>
+
+        <div class="top_container" id="select_student">
+            {{ form_label(formDocument.etudiant, 'Étudiant', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(formDocument.etudiant, {'attr': {'class': 'custom-select'}} ) }}
+        </div>
+
+        <script>
+            document.getElementById("select_student").style.display = "none";
+        </script>
+
+        <div class="form-group">
+            {{ form_label(formDocument.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(formDocument.valider, {'attr': {'class': 'button3'}} ) }}
+        </div>
+        {{ form_end(formDocument) }}
     </div>
     <div id="button">
         <a class="button" href="{{ path('home_students') }}" >Retourner au menu principal</a>

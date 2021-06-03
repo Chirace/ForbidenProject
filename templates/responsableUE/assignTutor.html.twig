@@ -13,62 +13,22 @@
                 </tr>
             </thead>
             <tbody>
+                {% for etudiant in etudiants %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Alexis Chirat</td>
-                    <td>SFR</td>
-                    <td>Amiens</td>
+                    <th scope="row"></th>
+                    <td>{{ etudiant.personne.prenom }} {{ etudiant.personne.nom }}</td>
+                    <td>{{ etudiant.entreprise.nom }}</td>
+                    <td>{{ etudiant.entreprise.localite }}</td>
                     <td>
                         <select class="custom-select">
                             <option selected>A définir...</option>
-                            <option value="1">Catherine Barry</option>
-                            <option value="2">Anne Lapujade</option>
-                            <option value="3">Jean-Luc Guérin</option>
+                                {% for tuteur in tuteurs %}
+                            <option value={{ tuteur.id }}>{{ tuteur.personne.prenom }} {{ tuteur.personne.nom }}</option>
+                            {% endfor %}
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Louis Savard</td>
-                    <td>France Télécom</td>
-                    <td>Amiens</td>
-                    <td>
-                        <select class="custom-select">
-                            <option selected>A définir...</option>
-                            <option value="1">Catherine Barry</option>
-                            <option value="2">Anne Lapujade</option>
-                            <option value="3">Jean-Luc Guérin</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Gaulthier Tomala</td>
-                    <td>Orange</td>
-                    <td>Amiens</td>
-                    <td>
-                        <select class="custom-select">
-                            <option selected>A définir...</option>
-                            <option value="1">Catherine Barry</option>
-                            <option value="2">Anne Lapujade</option>
-                            <option value="3">Jean-Luc Guérin</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Romain Vantomme</td>
-                    <td>Bouygues Télécom</td>
-                    <td>Amiens</td>
-                    <td>
-                        <select class="custom-select">
-                            <option selected>A définir...</option>
-                            <option value="1">Catherine Barry</option>
-                            <option value="2">Anne Lapujade</option>
-                            <option value="3">Jean-Luc Guérin</option>
-                        </select>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

@@ -38,6 +38,10 @@ home_tutors:
     path: /homeTutor
     controller: App\Controller\GeneralController::homeTutors
 
+RUE_add_document:
+    path: /RUE/addDocument
+    controller: App\Controller\GeneralController::addDocument
+
 RUE_see_feasibility_sheet:
     path: /RUE/feasibility
     controller: App\Controller\GeneralController::RUEFeasibility
@@ -81,6 +85,10 @@ student_marks:
 student_document:
     path: /student/addDocument
     controller: App\Controller\StudentController::addDocument
+
+student_documents:
+    path: /student/documents
+    controller: App\Controller\StudentController::listDocuments
 
 external_rateStudent:
     path: /ExternalSpeaker/rateStudent

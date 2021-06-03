@@ -12,22 +12,15 @@
                 </tr>
             </thead>
             <tbody>
+                {% for tuteur in tuteurs %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Catherine Barry</td>
-                    <td>Ceci est un commentaire pertinent</td>
+                    <th scope="row"></th>
+                    <td>{{ tuteur.personne.nom }} {{ tuteur.personne.prenom }}</td>
+                    <td>{{ tuteur.commentaire }}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Anne Lapujade</td>
-                    <td>Ceci est un autre commentaire pertinent</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Jean-Luc Guérin</td>
-                    <td>Définitivement un commentaire pertinent</td>
-                </tr>
+                {% endfor %}
             </tbody>
+            
         </table>
     </div>
     <div id="button">

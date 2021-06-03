@@ -59,6 +59,16 @@ class Etudiant
      */
     private $documents;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $note_oral;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Tuteur::class, inversedBy="etudiants")
+     */
+    private $tuteur;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
@@ -153,6 +163,18 @@ class Etudiant
         return $this;
     }
 
+    public function getNoteOral(): ?float
+    {
+        return $this->note_oral;
+    }
+
+    public function setNoteOral(?float $note_oral): self
+    {
+        $this->note_oral = $note_oral;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Document[]
      */
@@ -179,6 +201,18 @@ class Etudiant
                 $document->setEtudiant(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTuteur(): ?Tuteur
+    {
+        return $this->tuteur;
+    }
+
+    public function setTuteur(?Tuteur $tuteur): self
+    {
+        $this->tuteur = $tuteur;
 
         return $this;
     }

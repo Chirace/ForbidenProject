@@ -38,7 +38,7 @@ class Document
     private $date_depot;
 
     /**
-     * @ORM\OneToOne(targetEntity=Personne::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Personne::class, cascade={"persist", "remove"})
      */
     private $depositaire;
 
@@ -46,6 +46,13 @@ class Document
      * @ORM\ManyToOne(targetEntity=Etudiant::class, inversedBy="documents")
      */
     private $etudiant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TypeDocument::class, inversedBy="documents")
+     */
+    private $type_document;
+
+    private $typeDocument2;
 
     public function getId(): ?int
     {
@@ -120,6 +127,30 @@ class Document
     public function setEtudiant(?Etudiant $etudiant): self
     {
         $this->etudiant = $etudiant;
+
+        return $this;
+    }
+
+    public function getTypeDocument(): ?TypeDocument
+    {
+        return $this->type_document;
+    }
+
+    public function setTypeDocument(?TypeDocument $type_document): self
+    {
+        $this->type_document = $type_document;
+
+        return $this;
+    }
+
+    public function getTypeDocument2(): ?string
+    {
+        return $this->typeDocument2;
+    }
+
+    public function setTypeDocument2(string $typeDocument2): self
+    {
+        $this->typeDocument2 = $typeDocument2;
 
         return $this;
     }

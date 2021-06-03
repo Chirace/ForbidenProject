@@ -152,7 +152,8 @@ class SecurityController extends AbstractController
 
         // si rôle admin
         if ($role[0] == "ROLE_ADMIN")
-            return $this->render('admin/accueil.html.twig');
+            //return $this->render('security_registration');
+            return $this->redirectToRoute('security_registration');
         // si rôle étudiant
         elseif ($role[0] == "ROLE_ETUDIANT")
             return $this->render('student/accueil.html.twig');
