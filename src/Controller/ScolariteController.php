@@ -9,11 +9,37 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ScolariteController extends AbstractController {
     public function listStudents(){
-        return $this->render('scolarite/students.html.twig');
+        $listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)->findAll();
+
+        return $this->render('scolarite/students.html.twig', array(
+            'etudiants' => $listeEtudiants));
+   }
+
+    public function listDocuments(Request $request){
+        $documents = $this->getDoctrine()->getManager()->getRepository(Document::class)
+            ->findAll();
+
+        return $this->render('scolarite/documents.html.twig', array(
+            'documents' => $documents
+        ));
+    }
+
+    public function downloadDocument($id) {
+        $document = $this->getDoctrine ()->getRepository (Document::class)->find($id);
+
+        $fileName = $document->getIntitule().".pdf";
+        $file_with_path = $this->getParameter('upload_directory')."/".$fileName;
+        $response = new BinaryFileResponse($file_with_path);
+        return $response;
+        
+        return $this->render('scolarite/documents.html.twig', array(
+            'documents' => $documents
+        ));
     }
 
     public function addDocument(Request $request, EntityManagerInterface $manager, UserInterface $user){

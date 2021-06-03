@@ -34,9 +34,17 @@ class Tuteur
      */
     private $etudiants;
 
+    private $noteTempo;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Document::class, mappedBy="tuteur")
+     */
+    private $documents;
+
     public function __construct()
     {
         $this->etudiants = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,6 +76,18 @@ class Tuteur
         return $this;
     }
 
+    public function getNoteTempo(): ?float
+    {
+        return $this->noteTempo;
+    }
+
+    public function setNoteTempo(?float $noteTempo): self
+    {
+        $this->noteTempo = $noteTempo;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Etudiant[]
      */
@@ -92,6 +112,36 @@ class Tuteur
             // set the owning side to null (unless already changed)
             if ($etudiant->getTuteur() === $this) {
                 $etudiant->setTuteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Document[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Document $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setTuteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Document $document): self
+    {
+        if ($this->documents->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getTuteur() === $this) {
+                $document->setTuteur(null);
             }
         }
 

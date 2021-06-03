@@ -34,6 +34,11 @@ class TypeDocument
      */
     private $documents;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $delai_relance;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
@@ -64,6 +69,18 @@ class TypeDocument
     public function setDateLimite(\DateTimeInterface $date_limite): self
     {
         $this->date_limite = $date_limite;
+
+        return $this;
+    }
+
+    public function getDelaiRelance(): ?float
+    {
+        return $this->delai_relance;
+    }
+
+    public function setDelaiRelance(?float $delai_relance): self
+    {
+        $this->delai_relance = $delai_relance;
 
         return $this;
     }

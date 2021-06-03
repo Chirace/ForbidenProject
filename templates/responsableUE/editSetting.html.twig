@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="top_container">
+        <h1>Type Document - {{ typeDocument.intitule }}</h1>
+        {{ form_start(form) }}
+
+        {{ form_label(form.dateLimite, 'Date Limite', {'label_attr': {'class': 'p'}} ) }}
+        {{ form_widget(form.dateLimite, {'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(form.dateLimite) }}
+
+        {{ form_label(form.delaiRelance, 'Delai de relance', {'label_attr': {'class': 'p'}} ) }}
+        {{ form_widget(form.delaiRelance, {'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(form.delaiRelance) }}
+
+        <div class="form-group">
+            {{ form_label(form.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3'}} ) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+    <div id="button" class="margin_top">
+        <a class="button" href="{{ path('setting') }}" >Retour sur les types de document</a>
+    </div>
+{% endblock %}

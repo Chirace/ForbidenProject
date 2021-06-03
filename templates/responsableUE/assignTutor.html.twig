@@ -10,6 +10,7 @@
                     <th scope="col">Entreprise</th>
                     <th scope="col">Localité</th>
                     <th scope="col">Tuteur</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,21 +20,18 @@
                     <td>{{ etudiant.personne.prenom }} {{ etudiant.personne.nom }}</td>
                     <td>{{ etudiant.entreprise.nom }}</td>
                     <td>{{ etudiant.entreprise.localite }}</td>
+                    <td>{{ etudiant.tuteur.personne.nom }} {{ etudiant.tuteur.personne.prenom }}</td>
                     <td>
-                        <select class="custom-select">
-                            <option selected>A définir...</option>
-                                {% for tuteur in tuteurs %}
-                            <option value={{ tuteur.id }}>{{ tuteur.personne.prenom }} {{ tuteur.personne.nom }}</option>
-                            {% endfor %}
-                        </select>
+                        <a class="navbar-brand" href="{{ path('tutor_affect', { 'id': etudiant.id }) }}">
+                            <img src="/images/add.png" alt="icon ajouter" id="icon_add" class="icon_click">
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-    <div id="button" class="group_button">
-        <a class="button2" href="{{ path('home_responsable_ue') }}" >Enregistrer les modifications</a>
-        <a class="button2" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
+    <div id="button" class="margin_top">
+        <a class="button" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
     </div>
 {% endblock %}

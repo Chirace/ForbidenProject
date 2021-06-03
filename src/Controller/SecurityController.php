@@ -46,6 +46,7 @@ class SecurityController extends AbstractController
 
             if($role == "Étudiant") {
                 $personne->setRoles(['ROLE_ETUDIANT']);
+                $personne->setEntreprise(5);
             }
             if($role == "ResponsableUE" ) {
                 $personne->setRoles(['ROLE_RESPONSABLE']);

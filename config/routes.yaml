@@ -46,9 +46,48 @@ RUE_see_feasibility_sheet:
     path: /RUE/feasibility
     controller: App\Controller\GeneralController::RUEFeasibility
 
+RUE_documents:
+    path: /RUE/documents
+    controller: App\Controller\GeneralController::listDocuments
+
+RUE_download:
+    path: /RUE/document/{id}
+    controller: App\Controller\GeneralController::downloadDocument
+    requirements:
+        id:  \d+
+
+RUE_refuse_comment:
+    path: /RUE/refuseDocument/{id}
+    controller: App\Controller\GeneralController::refuseDocument
+    requirements:
+        id:  \d+
+
+RUE_admit_comment:
+    path: /RUE/admitDocument/{id}
+    controller: App\Controller\GeneralController::admitDocument
+    requirements:
+        id:  \d+
+
+RUE_add_comment:
+    path: /RUE/addComment/{id}
+    controller: App\Controller\GeneralController::addComment
+    requirements:
+        id:  \d+
+
+RUE_add_comment_suite:
+    path: /RUE/addCommentSuite/{id}
+    controller: App\Controller\GeneralController::addCommentSuite
+    methods: POST
+
 setting:
-    path: /setting
+    path: /RUE/setting
     controller: App\Controller\GeneralController::setting
+
+RUE_setting:
+    path: /RUE/setting/{id}
+    controller: App\Controller\GeneralController::editSetting
+    requirements:
+        id:  \d+
 
 student_list:
     path: /students
@@ -58,9 +97,21 @@ tutor_list:
     path: /tuteurs
     controller: App\Controller\GeneralController::listTutors
 
+tutor_comment:
+    path: /tuteurs/{id}
+    controller: App\Controller\GeneralController::commentTutor
+    requirements:
+        id:  \d+
+
 tutor_assign:
     path: /tutorAssign
     controller: App\Controller\GeneralController::assignTutor
+
+tutor_affect:
+    path: /tutorAssign/{id}
+    controller: App\Controller\GeneralController::affectTutor
+    requirements:
+        id:  \d+
 
 add_feasibility_sheet:
     path: /addSheet
@@ -74,9 +125,19 @@ scolarite_document:
     path: /scolarite/addDocument
     controller: App\Controller\ScolariteController::addDocument
 
+scolarite_documents:
+    path: /scolarite/documents
+    controller: App\Controller\ScolariteController::listDocuments
+
 scolarite_students:
     path: /scolarite/students
     controller: App\Controller\ScolariteController::listStudents
+
+scolarite_download:
+    path: /tutor/document/{id}
+    controller: App\Controller\ScolariteController::downloadDocument
+    requirements:
+        id:  \d+
 
 student_marks:
     path: /student/marks
@@ -90,6 +151,12 @@ student_documents:
     path: /student/documents
     controller: App\Controller\StudentController::listDocuments
 
+student_download:
+    path: /student/document/{id}
+    controller: App\Controller\StudentController::downloadDocument
+    requirements:
+        id:  \d+
+
 external_rateStudent:
     path: /ExternalSpeaker/rateStudent
     controller: App\Controller\ExternalController::rateStudent
@@ -98,14 +165,30 @@ tutor_students:
     path: /tutor/students
     controller: App\Controller\TutorController::listStudents
 
+tutor_student:
+    path: /tutor/student/{id}
+    controller: App\Controller\TutorController::editStudent
+    requirements:
+        id:  \d+
+
 tutor_document:
     path: /tutor/addDocument
     controller: App\Controller\TutorController::addDocument
+
+tutor_documents:
+    path: /tutor/documents
+    controller: App\Controller\TutorController::listDocuments
 
 tutor_rateStudent:
     path: /tutor/rateStudent
     controller: App\Controller\TutorController::rateStudent
 
+tutor_download:
+    path: /tutor/document/{id}
+    controller: App\Controller\TutorController::downloadDocument
+    requirements:
+        id:  \d+
+    
 error404:
     path: /{url} 
     controller: App\Controller\GeneralController::erreur

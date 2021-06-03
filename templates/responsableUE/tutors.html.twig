@@ -9,6 +9,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Enseignant</th>
                     <th scope="col">Commentaire</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,10 +18,14 @@
                     <th scope="row"></th>
                     <td>{{ tuteur.personne.nom }} {{ tuteur.personne.prenom }}</td>
                     <td>{{ tuteur.commentaire }}</td>
+                    <td>
+                        <a class="navbar-brand" href="{{ path('tutor_comment', { 'id': tuteur.id }) }}">
+                            <img src="/images/edit.png" alt="icon commenter" id="icon_edit" class="icon_click">
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
-            
         </table>
     </div>
     <div id="button">

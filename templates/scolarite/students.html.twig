@@ -1,7 +1,29 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container">
-        <h1>Liste des étudiants</h1>
+        <h1>Notes des étudiants</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Étudiants</th>
+                    <th scope="col">Note Suivi</th>
+                    <th scope="col">Note Oral</th>
+                    <th scope="col">Note Finale</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etudiant in etudiants %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{ etudiant.personne.nom }} {{ etudiant.personne.prenom }}</td>
+                    <td>{{ etudiant.noteSuivi }}</td>
+                    <td>{{ etudiant.noteOral }}</td>
+                    <td>{{ etudiant.moyenne }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <div id="button">
         <a class="button" href="{{ path('home_scolarite') }}" >Retourner au menu principal</a>

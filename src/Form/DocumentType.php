@@ -17,7 +17,8 @@ class DocumentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('intitule', FileType::class)
+            ->add('intitule', FileType::class, array('data_class' => null))
+            ->add('commentaire')
             ->add('valider', SubmitType::class)
             ->add('typeDocument2', ChoiceType::class, [
                 'choices'  => [

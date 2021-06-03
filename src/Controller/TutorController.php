@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Entity\Tuteur;
 use App\Entity\Document;
 use App\Entity\Etudiant;
 use App\Entity\Personne;
@@ -8,12 +9,99 @@ use App\Entity\TypeDocument;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TutorController extends AbstractController {
-    public function listStudents(){
-        return $this->render('tutor/students.html.twig');
+    public function listStudents(UserInterface $user){
+        $personne = $this->getDoctrine()->getManager()->getRepository(Personne::class)
+                        ->findOneByUsername($user->getUsername());
+        $tuteur = $this->getDoctrine()->getManager()->getRepository(Tuteur::class)
+                        ->findOneByPersonne($personne->getId());
+
+        $listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)
+            ->findByTuteur($tuteur->getId());
+
+        return $this->render('tutor/students.html.twig', array(
+            'etudiants' => $listeEtudiants
+        ));
+    }
+
+    public function editStudent(Request $request, UserInterface $user, EntityManagerInterface $manager, $id){
+        $etudiant = $this->getDoctrine()->getManager()->getRepository(Etudiant::Class)
+            ->find($id);
+        
+        if(!$etudiant)
+            throw $this->createNotFoundException('Etudiant[id='.$id.'] inexistant');
+
+        $form = $this->createFormBuilder($etudiant)
+            ->setAction($this->generateUrl('tutor_student',array('id' => $id)))
+            ->add('noteSuivi')
+            ->add('valider', SubmitType::class, array('label'=> 'modifier'))
+            ->getForm();
+    
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($etudiant);
+            $manager->flush();
+
+            $listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)->findAll();
+
+            return $this->render('tutor/students.html.twig', array(
+                'etudiants' => $listeEtudiants,
+                'form' => $form->createView()
+                )
+            );
+        }
+
+        return $this->render('tutor/editStudent.html.twig', array(
+            'etudiant' => $etudiant,
+            'form' => $form->createView()
+        ));
+    }
+
+    public function listDocuments(Request $request, UserInterface $user){
+        $personne = $this->getDoctrine()->getManager()->getRepository(Personne::class)
+            ->findOneByUsername($user->getUsername());
+        $tuteur = $this->getDoctrine()->getManager()->getRepository(Tuteur::class)
+            ->findOneByPersonne($personne);
+        $documents = $this->getDoctrine()->getRepository(Document::class)
+            ->findByTuteur($tuteur);
+
+        /*$documents = [];
+
+        foreach($etudiants as $etudiant) {
+            $documentsEtudiant = $this->getDoctrine()->getRepository(Document::class)
+                ->findByEtudiant($etudiant->getId());
+            array_push($documents, $documentsEtudiant);
+            die(print_r($documentsEtudiant));
+        }*/
+
+        //die(print_r($documents));
+
+        /*$documents = $this->getDoctrine()->getManager()->getRepository(Document::class)
+            ->findByEtudiant($etudiant->getId());*/
+
+        return $this->render('tutor/documents.html.twig', array(
+            'documents' => $documents
+        ));
+    }
+
+    public function downloadDocument($id) {
+        $document = $this->getDoctrine ()->getRepository (Document::class)->find($id);
+
+        $fileName = $document->getIntitule().".pdf";
+        $file_with_path = $this->getParameter('upload_directory')."/".$fileName;
+        $response = new BinaryFileResponse($file_with_path);
+        return $response;
+        
+        return $this->render('tutor/documents.html.twig', array(
+            'documents' => $documents
+        ));
     }
 
     public function addDocument(Request $request, EntityManagerInterface $manager, UserInterface $user){
@@ -77,7 +165,37 @@ class TutorController extends AbstractController {
             'formDocument' => $formDocument->createView()));
     }
 
-    public function rateStudent(){
-        return $this->render('tutor/rate.html.twig');
+    public function rateStudent(Request $request, EntityManagerInterface $manager, UserInterface $user){
+        $personne = $this->getDoctrine()->getManager()->getRepository(Personne::class)
+                        ->findOneByUsername($user->getUsername());
+        $tuteur = $this->getDoctrine()->getManager()->getRepository(Tuteur::class)
+                        ->findOneByPersonne($personne->getId());
+
+        $listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)
+            ->findByTuteur($tuteur->getId());
+
+        $form = $this->createFormBuilder($tuteur)
+            //->setAction($this->generateUrl('tutor_affect',array('id' => $id)))
+            ->add('etudiants', EntityType::class, array(
+                'class' => Etudiant::class,
+                'choice_label' => function ($etudiant) {
+                    return $etudiant->getPersonne()->getNom() . ' ' . $etudiant->getPersonne()->getPrenom();
+                }
+            ))
+            ->add('noteTempo')
+            ->add('valider', SubmitType::class, array('label'=> 'attribuer'))
+            ->getForm();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            
+            $manager->persist($tuteur);
+            $manager->flush();
+        }
+
+        return $this->render('tutor/rate.html.twig', array(
+            'form' => $form->createView(),
+            'etudiants' => $listeEtudiants
+        ));
     }
 }

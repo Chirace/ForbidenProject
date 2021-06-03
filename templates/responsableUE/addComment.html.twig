@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="top_container">
+        <h1>Document - {{ document.intitule }}</h1>
+        {{ form_start(form) }}
+
+        {{ form_label(form.commentaire, 'Commenter', {'label_attr': {'class': 'p'}} ) }}
+        {{ form_widget(form.commentaire, {'attr': {'class': 'form-control', 'placeholder': 'Commentaire ...'} }) }}
+        {{ form_errors(form.commentaire) }}
+
+        <div class="form-group">
+            {{ form_label(form.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3'}} ) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+    <div id="button" class="margin_top">
+        <a class="button" href="{{ path('RUE_documents') }}" >Retour sur les documents</a>
+    </div>
+{% endblock %}

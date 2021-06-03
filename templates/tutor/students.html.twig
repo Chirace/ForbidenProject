@@ -10,37 +10,24 @@
                     <th scope="col">Note Suivi</th>
                     <th scope="col">Note Oral</th>
                     <th scope="col">Note Finale</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
+                {% for etudiant in etudiants %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Alexis Chirat</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
+                    <th scope="row"></th>
+                    <td>{{ etudiant.personne.nom }} {{ etudiant.personne.prenom }}</td>
+                    <td>{{ etudiant.noteSuivi }}</td>
+                    <td>{{ etudiant.noteOral }}</td>
+                    <td>{{ etudiant.moyenne }}</td>
+                    <td>
+                        <a class="navbar-brand" href="{{ path('tutor_student', { 'id': etudiant.id }) }}">
+                            <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                        </a>
+                    </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Louis Savard</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Gaulthier Tomala</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Romain Vantomme</td>
-                    <td>20</td>
-                    <td>20</td>
-                    <td>20</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

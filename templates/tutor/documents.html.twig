@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="top_container">
-        <h1>Documents - {{ etudiant.personne.prenom }} {{ etudiant.personne.nom }}</h1>
+        <h1>Documents</h1>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -20,7 +20,7 @@
                     <td>{{ document.intitule }}</td>
                     <td>{{ document.etatDocument }}</td>
                     <td>
-                        <a class="navbar-brand" href="{{ path('student_download', { 'id': document.id }) }}">
+                        <a class="navbar-brand" href="{{ path('tutor_download', { 'id': document.id }) }}">
                             <img src="/images/download.png" alt="icon télécharger" id="icon_download" class="icon_click">
                         </a>
                     </td>
@@ -31,6 +31,6 @@
     </div>
 
     <div id="button" class="margin_top">
-        <a class="button" href="{{ path('home_students') }}" >Retourner au menu principal</a>
+        <a class="button" href="{{ path('home_tutors') }}" >Retourner au menu principal</a>
     </div>
 {% endblock %}

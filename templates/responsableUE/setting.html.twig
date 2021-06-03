@@ -1,28 +1,35 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container">
+    <div class="top_container">
         <h1>Paramétrer les dates de rendu et délais de relance</h1>
-        <div>
-            <label class="little_label">Rendu du poster</label>
-            <input type="text" id="input_date" name="rendu_poster" placeholder="JJ/MM" value="14/07">
-        </div>
-        <div>
-            <label class="little_label">Rendu du rapport</label>
-            <input type="text" id="space_bot" name="rendu_rapport" placeholder="JJ/MM" value="23/08">
-        </div>
-        <div>
-            <label class="little_label">Relance étudiants</label>
-            <input type="text" id="input_number" name="relance_etudiant" placeholder="Nombre de jours" value="7">
-            <label class="little_label">jours.</label>
-        </div>
-        <div>
-            <label class="little_label">Relance tuteurs</label>
-            <input type="text" id="input_number" name="relance_tuteur" placeholder="Nombre de jours" value="7">
-            <label class="little_label">jours.</label>
-        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Intitulé</th>
+                    <th scope="col">Date de rendu</th>
+                    <th scope="col">Délai de relance</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for typeDocument in typeDocuments %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{ typeDocument.intitule }}</td>
+                    <td>{{ typeDocument.dateLimite |date('Y-m-d') }}</td>
+                    <td>{{ typeDocument.delaiRelance }}</td>
+                    <td>
+                        <a class="navbar-brand" href="{{ path('RUE_setting', { 'id': typeDocument.id }) }}">
+                            <img src="/images/edit.png" alt="icon parametrer" id="icon_edit" class="icon_click">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <div id="button" class="group_button">
-        <a class="button2" href="{{ path('home_responsable_ue') }}" >Enregistrer les modifications</a>
-        <a class="button2" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
+        <a class="button" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
     </div>
 {% endblock %}

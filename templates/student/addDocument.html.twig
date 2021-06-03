@@ -20,8 +20,15 @@
             {{ form_widget(formDocument.etudiant, {'attr': {'class': 'custom-select'}} ) }}
         </div>
 
+        <div class="top_container" id="commentaire">
+            {{ form_label(formDocument.commentaire, 'Commenter', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(formDocument.commentaire, {'attr': {'class': 'form-control', 'placeholder': 'Commentaire ...'} }) }}
+            {{ form_errors(formDocument.commentaire) }}
+        </div>
+
         <script>
             document.getElementById("select_student").style.display = "none";
+            document.getElementById("commentaire").style.display = 'none';
         </script>
 
         <div class="form-group">

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class StudentController extends AbstractController {
@@ -22,6 +23,19 @@ class StudentController extends AbstractController {
         
         return $this->render('student/marks.html.twig', array(
             'etudiant' => $etudiant));
+    }
+
+    public function downloadDocument($id) {
+        $document = $this->getDoctrine ()->getRepository (Document::class)->find($id);
+
+        $fileName = $document->getIntitule().".pdf";
+        $file_with_path = $this->getParameter('upload_directory')."/".$fileName;
+        $response = new BinaryFileResponse($file_with_path);
+        return $response;
+        
+        return $this->render('student/documents.html.twig', array(
+            'documents' => $documents
+        ));
     }
 
     public function addDocument(Request $request, EntityManagerInterface $manager, UserInterface $user){

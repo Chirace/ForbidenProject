@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="top_container">
+        <h1>Étudiant - {{ etudiant.personne.prenom }} {{ etudiant.personne.nom }}</h1>
+        {{ form_start(form) }}
+
+        {{ form_label(form.noteSuivi, 'Note suivie', {'label_attr': {'class': 'p'}} ) }}
+        {{ form_widget(form.noteSuivi, {'attr': {'class': 'form-control', 'placeholder': 'Note de suivie ...'} }) }}
+        {{ form_errors(form.noteSuivi) }}
+
+        <div class="form-group">
+            {{ form_label(form.valider, 'Valider', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3'}} ) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+    <div id="button" class="margin_top">
+        <a class="button" href="{{ path('tutor_students') }}" >Retour sur mes étudiants suivis</a>
+    </div>
+{% endblock %}

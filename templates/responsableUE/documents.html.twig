@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="top_container">
+        <h1>Documents</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Type document</th>
+                    <th scope="col">Intitule</th>
+                    <th scope="col">État document</th>
+                    <th scope="col" colspan="4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for document in documents %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{ document.typeDocument.intitule }}</td>
+                    <td>{{ document.intitule }}</td>
+                    <td>{{ document.etatDocument }}</td>
+                    <td>
+                        <a class="navbar-brand" href="{{ path('RUE_admit_comment', { 'id': document.id }) }}">
+                            <img src="/images/check.png" alt="icon valider" id="icon_check" class="icon_click">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="navbar-brand" href="{{ path('RUE_add_comment', { 'id': document.id }) }}">
+                            <img src="/images/edit.png" alt="icon commenter" id="icon_edit" class="icon_click">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="navbar-brand" href="{{ path('RUE_refuse_comment', { 'id': document.id }) }}">
+                            <img src="/images/refuse.png" alt="icon refuser" id="icon_refuse" class="icon_click">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="navbar-brand" href="{{ path('RUE_download', { 'id': document.id }) }}">
+                            <img src="/images/download.png" alt="icon télécharger" id="icon_download" class="icon_click">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="button" class="margin_top">
+        <a class="button" href="{{ path('home_responsable_ue') }}" >Retourner au menu principal</a>
+    </div>
+{% endblock %}

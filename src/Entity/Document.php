@@ -54,6 +54,11 @@ class Document
 
     private $typeDocument2;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Tuteur::class, inversedBy="documents")
+     */
+    private $tuteur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -151,6 +156,18 @@ class Document
     public function setTypeDocument2(string $typeDocument2): self
     {
         $this->typeDocument2 = $typeDocument2;
+
+        return $this;
+    }
+
+    public function getTuteur(): ?Tuteur
+    {
+        return $this->tuteur;
+    }
+
+    public function setTuteur(?Tuteur $tuteur): self
+    {
+        $this->tuteur = $tuteur;
 
         return $this;
     }
