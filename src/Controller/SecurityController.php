@@ -8,6 +8,7 @@ use App\Entity\Personne;
 
 use App\Entity\Formation;
 use App\Entity\Scolarite;
+use App\Entity\Entreprise;
 use App\Entity\ResponsableUE;
 use App\Entity\Administrateur;
 use App\Form\RegistrationType;
@@ -46,7 +47,6 @@ class SecurityController extends AbstractController
 
             if($role == "Étudiant") {
                 $personne->setRoles(['ROLE_ETUDIANT']);
-                $personne->setEntreprise(5);
             }
             if($role == "ResponsableUE" ) {
                 $personne->setRoles(['ROLE_RESPONSABLE']);
@@ -70,6 +70,10 @@ class SecurityController extends AbstractController
             if($role == "Étudiant") {
                 $etudiant = new Etudiant();
                 $etudiant->setPersonne($personne);
+                $entreprise = $this->getDoctrine()->getManager()->getRepository(Entreprise::class)
+                ->findOneById(5);
+
+                $etudiant->setEntreprise($entreprise);
 
                 
 

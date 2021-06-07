@@ -49,7 +49,15 @@ class TutorController extends AbstractController {
             $manager->persist($etudiant);
             $manager->flush();
 
-            $listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)->findAll();
+            $personne = $this->getDoctrine()->getManager()->getRepository(Personne::class)
+                        ->findOneByUsername($user->getUsername());
+            $tuteur = $this->getDoctrine()->getManager()->getRepository(Tuteur::class)
+                            ->findOneByPersonne($personne->getId());
+
+            $listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)
+                ->findByTuteur($tuteur->getId());
+
+            //$listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)->findAll();
 
             return $this->render('tutor/students.html.twig', array(
                 'etudiants' => $listeEtudiants,
@@ -71,20 +79,6 @@ class TutorController extends AbstractController {
             ->findOneByPersonne($personne);
         $documents = $this->getDoctrine()->getRepository(Document::class)
             ->findByTuteur($tuteur);
-
-        /*$documents = [];
-
-        foreach($etudiants as $etudiant) {
-            $documentsEtudiant = $this->getDoctrine()->getRepository(Document::class)
-                ->findByEtudiant($etudiant->getId());
-            array_push($documents, $documentsEtudiant);
-            die(print_r($documentsEtudiant));
-        }*/
-
-        //die(print_r($documents));
-
-        /*$documents = $this->getDoctrine()->getManager()->getRepository(Document::class)
-            ->findByEtudiant($etudiant->getId());*/
 
         return $this->render('tutor/documents.html.twig', array(
             'documents' => $documents
@@ -196,6 +190,52 @@ class TutorController extends AbstractController {
         return $this->render('tutor/rate.html.twig', array(
             'form' => $form->createView(),
             'etudiants' => $listeEtudiants
+        ));
+    }
+
+    public function forum(){
+        $listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)->findAll();
+
+        return $this->render('tutor/forum.html.twig', array(
+            'etudiants' => $listeEtudiants));
+    }
+
+    public function forumStudent(Request $request, UserInterface $user, EntityManagerInterface $manager, $id){
+        $personne = $this->getDoctrine()->getManager()->getRepository(Personne::class)
+            ->findOneByUsername($user->getUsername());
+        $tuteur = $this->getDoctrine()->getManager()->getRepository(Tuteur::class)
+            ->findOneByPersonne($personne);
+        
+        $etudiant = $this->getDoctrine()->getManager()->getRepository(Etudiant::Class)
+            ->find($id);
+        
+        if(!$etudiant)
+            throw $this->createNotFoundException('Etudiant[id='.$id.'] inexistant');
+
+        $form = $this->createFormBuilder($etudiant)
+            ->setAction($this->generateUrl('tutor_forum_student',array('id' => $id)))
+            ->add('noteOral')
+            ->add('valider', SubmitType::class, array('label'=> 'Attribuer'))
+            ->getForm();
+    
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($etudiant);
+            $manager->flush();
+
+            $listeEtudiants = $this->getDoctrine()->getRepository(Etudiant::Class)->findAll();
+
+            return $this->render('tutor/forum.html.twig', array(
+                'etudiants' => $listeEtudiants,
+                'form' => $form->createView()
+                )
+            );
+        }
+
+        return $this->render('tutor/forumStudent.html.twig', array(
+            'etudiant' => $etudiant,
+            'form' => $form->createView()
         ));
     }
 }

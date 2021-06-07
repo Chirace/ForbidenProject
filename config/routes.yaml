@@ -188,7 +188,15 @@ tutor_download:
     controller: App\Controller\TutorController::downloadDocument
     requirements:
         id:  \d+
-    
+
+tutor_forum:
+    path: /tutor/forum
+    controller: App\Controller\TutorController::forum
+
+tutor_forum_student:
+    path: /tutor/forum/student/{id}
+    controller: App\Controller\TutorController::forumStudent
+
 error404:
     path: /{url} 
     controller: App\Controller\GeneralController::erreur

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Forum - Choix étudiant</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Étudiants</th>
+                    <th scope="col">Note Oral</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etudiant in etudiants %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{ etudiant.personne.nom }} {{ etudiant.personne.prenom }}</td>
+                    <td>{{ etudiant.noteOral }}</td>
+                    <td>
+                        <a class="navbar-brand" href="{{ path('tutor_forum_student', { 'id': etudiant.id }) }}">
+                            <img src="/images/edit.png" alt="icon editer" id="icon_edit" class="icon_click">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="button">
+        <a class="button" href="{{ path('home_tutors') }}" >Retourner au menu principal</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Forum - Étudiant - {{ etudiant.personne.prenom }} {{ etudiant.personne.nom }}</h1>
+        {{ form_start(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.noteOral, 'Note oral', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.noteOral, {'attr': {'class': 'form-control'}} ) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.valider, 'Attribuer', {'label_attr': {'class': 'p'}} ) }}
+            {{ form_widget(form.valider, {'attr': {'class': 'button3'}} ) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+    <div id="button" class="margin_top">
+        <a class="button" href="{{ path('tutor_forum') }}" >Retour sur les étudiants</a>
+    </div>
+{% endblock %}
